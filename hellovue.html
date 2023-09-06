@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Hello world App</title>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+        }
+    </script>
+
+    <style>
+        .myDiv {
+            border: 5px outset brown;
+            background-color: aqua;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="myDiv">
+    <h1>{{ title }}</h1>
+    <h1>{{ title2.split('').reverse().join('') }}</h1>
+    <h1>{{ title3 }}</h1>
+    <h1>{{ title4 }}</h1>
+    <h1 style="font-size: 70px;">{{ count }}</h1>
+    <button @click="increment">Increase the value</button>
+    <h1>{{ list }}</h1>
+    <h1>{{ checked }}</h1>
+    <input type="text" v-model="count"/>
+
+    <button @click="toggleAwesome">Toggle</button>
+
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>Oh no 😢</h1>
+</div>
+
+<script type="module">
+    import { createApp, ref } from 'vue'
+
+    createApp({
+        data() {
+            return {
+                title: "Hello World! Vue",
+                title2: "beans",
+                title3: "more beans",
+                title4: "beans 4 a new bean",
+                count: 0,
+                list: [1, 5, 7, 9],
+                checked: true,
+                awesome: true,
+            };
+        },
+        methods: {
+            increment() {
+                this.count++
+            },
+            toggleAwesome() {
+                this.awesome = !this.awesome;
+            },
+        },
+    }).mount("#app");
+
+</script>
+</body>
+</html>
